@@ -1,4 +1,4 @@
-# CompileSpace 🚀💻
+# Compile Space 🚀💻
 
 ## Code Brewers Hackathon Project for Tally Solutions
 
