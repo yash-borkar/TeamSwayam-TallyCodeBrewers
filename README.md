@@ -120,9 +120,10 @@ Thank you for contributing to CompileSpace!
       audience.
    - Advanced Analytics: Implementing features to analyze user performance and provide personalized recommendations.
    - Enhanced UI/UX: Continuously refining the user interface and experience based on user feedback.
+   - Sandbox Environment: Creating a secure sandbox environment for running user code to prevent potential security risks and ensure isolated execution.
 
 ## Containerizing the web application in Docker 
-   #### follow below commands
+   #### Follow below commands
    # compiler_exec_from_docker
  - Inside compiler_exec_from_docker (folder)
  - use this folder for docker deployment
@@ -147,8 +148,8 @@ click  on those server links and try the 3 compilers and hit run :)
 
 
 ## 👥 Contributors
-
 - Kartikey Sapkal
 - Prathamesh Kapadne
+- Yash Borkar
   
 ## Happy Coding! 🎈👨‍💻👩‍💻
