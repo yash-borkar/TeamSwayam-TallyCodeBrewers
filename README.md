@@ -9,7 +9,7 @@ Welcome to CompileSpace - Your All-in-One Online Coding Platform! 🎉
 
 CompileSpace is an innovative online coding platform developed for the "Code Brewers" hackathon by Tally Solutions. Our goal is to provide a comprehensive environment for coders of all levels, from beginners to competitive programmers.
 
-## Demo Images
+## 📸 Demo Images
    <table>
      <tr>
        <td>
