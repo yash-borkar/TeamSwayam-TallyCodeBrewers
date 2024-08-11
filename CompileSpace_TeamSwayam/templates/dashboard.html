@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container" style="margin-top: 5rem;">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Dashboard</h1>
+        <p class="dashboard-user">Logged in as {{ session['username'] }}</p>
+    </div>
+
+    <div class="dashboard-stats">
+        <h2 class="section-title">Your Statistics</h2>
+        <div class="stats-details">
+            <p class="stats-item">Total Attempts: {{ stats['total_attempts'] }}</p>
+            <p class="stats-item">Correct Attempts: {{ stats['correct_attempts'] }}</p>
+        </div>
+        <h3 class="section-subtitle">Problem Statistics</h3>
+        <ul class="problem-stats-list">
+            {% for pid, data in stats['problems_attempted'].items() %}
+            <li class="problem-stats-item">Problem {{ pid }}: {{ data['correct'] }} correct out of {{ data['attempts'] }} attempts</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dashboard-leaderboard">
+        <h2 class="section-title">Leaderboard</h2>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Correct Attempts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rank, (username, user_data) in enumerate(leaderboard, start=1) %}
+                <tr class="leaderboard-row">
+                    <td>{{ rank }}</td>
+                    <td>{{ username }}</td>
+                    <td>{{ user_data['correct_attempts'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

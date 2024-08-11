@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}{{ c_problems.title }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+{% endblock %} {% block content %}
+<div class="container problem-container" id="my-container">
+  <!-- <h1 class="problem-title">{{ c_problems.title }}</h1>
+    <p class="problem-description">{{ c_problems.description }}</p> -->
+
+  <div class="my-form">
+    <form action="" method="post">
+      <label for="language">Language:</label>
+      
+        <select name="language" id="language">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+      
+     
+
+      <label for="code">Code:</label>
+      <textarea
+        name="code"
+        id="code"
+        rows="10"
+        placeholder="Write your code here..."
+      ></textarea>
+
+      <label for="input_data">Input Data:</label>
+      <textarea
+        name="input_data"
+        id="input_data"
+        rows="3"
+        placeholder="Input data..."
+      ></textarea>
+
+      <button type="submit" id="mybutton">Submit</button>
+    </form>
+  </div>
+  <div class="result-stats">
+    {% if result is not none %}
+    <div class="result-section">
+      <h2 class="section-title newtitle">Result:</h2>
+      <pre class="result-output">{{ result }}</pre>
+      <p class="result-status {{ 'correct' if is_correct else 'incorrect' }}">
+        <strong>{{ 'Correct!' if is_correct else 'Incorrect!' }}</strong>
+      </p>
+    </div>
+    {% endif %} {% if stats is not none %}
+    <div class="stats-section">
+      <h2 class="section-title newtitle">Your Statistics:</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Total Attempts:</span>
+          <span class="stat-value">{{ stats['total_attempts'] }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Correct Attempts:</span>
+          <span class="stat-value">{{ stats['correct_attempts'] }}</span>
+        </div>
+      </div>
+      <h3 class="subsection-title">Problem Statistics:</h3>
+      <ul class="problem-stats-list">
+        {% for pid, data in stats['problems_attempted'].items() %}
+        <li class="problem-stat-item">
+          <span class="problem-number">Problem {{ pid }}:</span>
+          <span class="problem-score"
+            >{{ data['correct'] }} correct out of {{ data['attempts'] }}
+            attempts</span
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Code Arena - Home{% endblock %}
+
+{% block content %}
+
+<div class="container-open">
+
+    <div class="hero-section">
+        <h1 id="typewriter" style="
+            overflow: hidden; 
+            white-space: nowrap; 
+            border-right: .15em solid orange; 
+            width: 100%; /* Ensure the h1 takes full width for centering */
+            text-align: center; /* Center text horizontally */
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%); /* Center text horizontally */
+            animation: 
+                typing 3.5s steps(40, end) 1s 1 normal both,
+                blink-caret .75s step-end infinite;
+        ">
+            Welcome to Compile Space
+        </h1>
+        <p class="hero-text">Practice coding problems, improve your skills, and prepare for technical interviews!</p>
+        <a href="{{ url_for('code_playground') }}" {% if request.path == url_for('code_playground') %}class="active"{% endif %} class="cta-button">Get Started</a>
+    </div>
+    
+    <style>
+    @keyframes typing {
+        from { width: 0; } 
+        to { width: 100%; } 
+    }
+    
+    @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: orange; }
+    }
+    </style>
+    
+    
+    
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h2>Diverse Problem Set</h2>
+            <p>Tackle a wide range of coding challenges across different difficulty levels.</p>
+        </div>
+        <div class="feature-item">
+            <h2>Multiple Languages</h2>
+            <p>Code in Python, JavaScript, or C++ - choose your preferred language!</p>
+        </div>
+        <div class="feature-item">
+            <h2>Real-time Feedback</h2>
+            <p>Get instant feedback on your solutions with our test case system.</p>
+        </div>
+        <div class="feature-item">
+            <h2>Contribute Problems</h2>
+            <p>Add your own coding problems to expand our collection.</p>
+        </div>
+    </div>
+    
+    <!-- <section class="additional-services">
+        <h2 class="section-title">Additional Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-users"></i>
+                <h3>Community Forums</h3>
+                <p>Engage with fellow coders, share insights, and learn together.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-trophy"></i>
+                <h3>Coding Competitions</h3>
+                <p>Participate in regular contests and climb the leaderboard.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-book"></i>
+                <h3>Learning Paths</h3>
+                <p>Follow structured paths to master specific programming concepts.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-video"></i>
+                <h3>Video Tutorials</h3>
+                <p>Watch expert-led video explanations for complex problems.</p>
+            </div>
+        </div>
+    </section> -->
+    
+    <section class="testimonials">
+        <h2 class="section-title">The Coding Mindset</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-item">
+                <p>"I’m not a great programmer; I’m just a good programmer with great habits"</p>
+                <span class="testimonial-author">- Kent Beck</span>
+            </div>
+            <div class="testimonial-item">
+                <p>"If debugging is the process of removing bugs, then programming must be the process of putting them in"</p>
+                <span class="testimonial-author">– Sam Redwine</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="call-to-action">
+        <h2>Ready to Level Up Your Coding Skills?</h2>
+        <p>Join thousands of developers who are sharpening their skills with Code Arena.</p>
+        <a href="{{ url_for('code_playground') }}" {% if request.path == url_for('code_playground') %}class="active"{% endif %} class="cta-button">Start Now</a>
+    </section>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}

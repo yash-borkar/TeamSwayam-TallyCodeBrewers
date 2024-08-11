@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compile Space</title
+    <!-- Include CodeMirror CSS and JS files -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="myheader" style="position: fixed;">
+        <div class="logo">Team Swayam</div>
+        <nav class="mynav">
+            <a href="{{ url_for('home') }}" {% if request.path == url_for('home') %}class="active"{% endif %}>Home</a>
+            <a href="{{ url_for('code_playground') }}" {% if request.path == url_for('code_playground') %}class="active"{% endif %}>Code Playground</a>
+            <a href="{{ url_for('problem_list') }}" {% if request.path == url_for('problem_list') %}class="active"{% endif %}>Code Arena</a>
+            <a href="{{ url_for('add_problem_route') }}" {% if request.path == url_for('add_problem_route') %}class="active"{% endif %}>Add Problem</a>
+            <a href="{{ url_for('index') }}" {% if request.path == url_for('index') %}class="active"{% endif %}>Code Battleground</a> 
+
+            <button id="dark-mode-toggle">
+                <span id="dark-mode-icon">🌙</span> <!-- Icon for dark mode -->
+            </button>
+        </nav>
+    </header>
+    <main style="margin-top: 3.5rem;">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Team Swayam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Save preference to localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', null);
+            }
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

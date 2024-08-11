@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Problem List{% endblock %}
+
+{% block content %}
+<div style="margin-top: 5rem;">
+    <h1>Problem List</h1>
+<ul class="problem-list">
+    {% for problem in problems %}
+    <li>
+        <div class="add-problem-main">
+              
+            <div >
+                <a href="{{ url_for('problem_detail', problem_id=problem.id) }}">{{ problem.title }}</a>
+            </div>
+            <div class="solve-button-container">
+                <a href="{{ url_for('problem_detail', problem_id=problem.id) }}" >
+                    <button type="submit" class="solve-button">Solve</button>
+            </a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock %}
