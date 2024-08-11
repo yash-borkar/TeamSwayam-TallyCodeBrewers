@@ -112,7 +112,18 @@ We welcome contributions to improve CompileSpace! To contribute, please follow t
 
 Thank you for contributing to CompileSpace!
 
-   
+## 🔮 Future Scopes
+#### We plan to enhance CompileSpace with additional features and improvements, including
+   - Security Enhancements: Utilizing Docker and Kubernetes to containerize all compilers and the
+     Flask application for improved security and scalability.
+   - Multi-Language Support: Adding support for multiple programming languages to cater to a broader
+      audience.
+   - Advanced Analytics: Implementing features to analyze user performance and provide personalized recommendations.
+   - Enhanced UI/UX: Continuously refining the user interface and experience based on user feedback.
+
+## Containerizing the web application in Docker 
+   #### 
+
 ## 👥 Contributors
 
 - Kartikey Sapkal
