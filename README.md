@@ -152,4 +152,4 @@ click  on those server links and try the 3 compilers and hit run :)
 - Prathamesh Kapadne : https://www.linkedin.com/in/prathamesh-kapadne-a1b573219/
 - Yash Borkar : https://www.linkedin.com/in/yashborkar/
   
-## Happy Coding! 🎈👨‍💻👩‍💻
+### Happy Coding! 🎈👨‍💻
