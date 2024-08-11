@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ problem.title }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>{{ problem.title }}</h1>
+    <p>{{ problem.description }}</p>
+    <h2>Constraints</h2>
+    <p>{{ problem.constraints }}</p>
+    <h2>Submit Your Solution</h2>
+    <form id="solution-form">
+        <select id="language" name="language">
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+        </select>
+        <textarea id="code" name="code" rows="20" cols="80" placeholder="Write your code here"></textarea>
+        <button type="submit">Submit Solution</button>
+    </form>
+    <div id="results"></div>
+    <a href="{{ url_for('problem_submissions', problem_id=problem_id) }}">View All Submissions</a>
+    <script src="/static/script.js"></script>
+    <script>
+        document.getElementById('solution-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch(`/submit_solution/{{ problem_id }}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `
+                    <h3>Submission Results</h3>
+                    <p>All test cases passed: ${data.passed_all ? 'Yes' : 'No'}</p>
+                    <ul>
+                        ${data.results.map(result => `
+                            <li>
+                                Test Case ${result.test_case}: ${result.passed ? 'Passed' : 'Failed'}
+                                <br>Input: ${result.input}
+                                <br>Expected Output: ${result.expected_output}
+                                <br>Actual Output: ${result.actual_output}
+                                <br>Execution Time: ${result.execution_time}
+                                <br>Memory Usage: ${result.memory_usage}
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

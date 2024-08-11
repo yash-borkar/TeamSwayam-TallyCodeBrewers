@@ -1,0 +1,43 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - cpp
+      - java
+      - c
+      - python
+
+  cpp:
+    image: gcc:latest
+    volumes:
+      - ./code:/code
+    working_dir: /code
+    command: tail -f /dev/null
+
+  java:
+    image: openjdk:latest
+    volumes:
+      - ./code:/code
+    working_dir: /code
+    command: tail -f /dev/null
+
+  c:
+    image: gcc:latest
+    volumes:
+      - ./code:/code
+    working_dir: /code
+    command: tail -f /dev/null
+
+  python:
+    image: python:3.9-slim
+    volumes:
+      - ./code:/code
+    working_dir: /code
+    command: tail -f /dev/null

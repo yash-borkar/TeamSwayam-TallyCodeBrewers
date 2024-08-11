@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions for Problem {{ problem_id }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Submissions for Problem {{ problem_id }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Language</th>
+                <th>Passed All Tests</th>
+                <th>View Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission in submissions %}
+                <tr>
+                    <td>{{ submission.timestamp | datetime }}</td>
+                    <td>{{ submission.language }}</td>
+                    <td>{{ 'Yes' if submission.passed_all else 'No' }}</td>
+                    <td><button onclick="showDetails({{ loop.index0 }})">View Details</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="submission-details"></div>
+
+    <script>
+        // Ensure the submissions data is properly serialized as a JavaScript object
+        const submissions = JSON.parse('{{ submissions | tojson | safe }}');
+
+        function showDetails(index) {
+            const submission = submissions[index];
+            const detailsDiv = document.getElementById('submission-details');
+            detailsDiv.innerHTML = `
+                <h2>Submission Details</h2>
+                <p>Language: ${submission.language}</p>
+                <p>Timestamp: ${new Date(submission.timestamp * 1000).toLocaleString()}</p>
+                <p>Passed All Tests: ${submission.passed_all ? 'Yes' : 'No'}</p>
+                <h3>Code:</h3>
+                <pre><code>${submission.code}</code></pre>
+                <h3>Test Results:</h3>
+                <ul>
+                    ${submission.results.map(result => `
+                        <li>
+                            Test Case ${result.test_case}: ${result.passed ? 'Passed' : 'Failed'}
+                            <br>Input: ${result.input}
+                            <br>Expected Output: ${result.expected_output}
+                            <br>Actual Output: ${result.actual_output}
+                            <br>Execution Time: ${result.execution_time}
+                            <br>Memory Usage: ${result.memory_usage}
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Battleground</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Coding Battleground</h1>
+    <h2>Ongoing Contests</h2>
+    <ul id="contest-list">
+        <!-- This would be populated dynamically in a real application -->
+    </ul>
+    <h2>Create a New Contest</h2>
+    <form id="contest-form">
+        <input type="text" id="contest-title" placeholder="Contest Title" required>
+        <textarea id="contest-description" placeholder="Contest Description" required></textarea>
+        <input type="datetime-local" id="contest-start" required>
+        <input type="datetime-local" id="contest-end" required>
+        <button type="submit">Create Contest</button>
+    </form>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

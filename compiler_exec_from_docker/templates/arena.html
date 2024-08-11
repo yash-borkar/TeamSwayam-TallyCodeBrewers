@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Arena</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Coding Arena</h1>
+    <h2>Available Problems</h2>
+    <ul id="problem-list">
+        {% for problem in problems %}
+            <li>
+                <a href="{{ url_for('problem_detail', problem_id=loop.index0) }}">{{ problem.title }}</a>
+                <a href="{{ url_for('problem_submissions', problem_id=loop.index0) }}">(View Submissions)</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Submit a New Problem</h2>
+    <form id="problem-form">
+        <input type="text" id="problem-title" name="title" placeholder="Problem Title" required>
+        <textarea id="problem-description" name="description" placeholder="Problem Description" required></textarea>
+        <textarea id="problem-constraints" name="constraints" placeholder="Constraints" required></textarea>
+        <textarea id="problem-testcases" name="testcases" placeholder="Test Cases (JSON format)" required></textarea>
+        <button type="submit">Submit Problem</button>
+    </form>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

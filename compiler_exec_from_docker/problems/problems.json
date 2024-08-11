@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Sum of Two Numbers",
+      "description": "Write a function that takes two integers as input and returns their sum.",
+      "constraints": "The input integers will be between -1000 and 1000.",
+      "testcases": [
+        {
+          "input": "5 3",
+          "output": "8"
+        },
+        {
+          "input": "-1 7",
+          "output": "6"
+        },
+        {
+          "input": "0 0",
+          "output": "0"
+        }
+      ]
+    }
+
+]
