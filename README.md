@@ -148,8 +148,8 @@ click  on those server links and try the 3 compilers and hit run :)
 
 
 ## 👥 Contributors
-- Kartikey Sapkal
-- Prathamesh Kapadne
-- Yash Borkar
+- Kartikey Sapkal (https://www.linkedin.com/in/kartikey-sapkal-316822248/)
+- Prathamesh Kapadne (https://www.linkedin.com/in/prathamesh-kapadne-a1b573219/)
+- Yash Borkar (https://www.linkedin.com/in/yashborkar/)
   
 ## Happy Coding! 🎈👨‍💻👩‍💻
